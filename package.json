@@ -1,0 +1,118 @@
+{
+  "name": "tex-sync-view",
+  "displayName": "TeX Sync View",
+  "description": "TeX 専用の PDF プレビュー。選択範囲のマーク表示と、tex と PDF の双方向スクロール連動。",
+  "version": "0.1.0",
+  "publisher": "fatcorn753",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:latex",
+    "onLanguage:tex"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "texSync.openPreview",
+        "title": "TeX Sync: PDF プレビューを開く"
+      },
+      {
+        "command": "texSync.build",
+        "title": "TeX Sync: ビルド"
+      },
+      {
+        "command": "texSync.toggleScrollSync",
+        "title": "TeX Sync: スクロール連動の切り替え"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "texSync.openPreview",
+          "when": "editorLangId == latex || editorLangId == tex"
+        },
+        {
+          "command": "texSync.build",
+          "when": "editorLangId == latex || editorLangId == tex"
+        },
+        {
+          "command": "texSync.toggleScrollSync",
+          "when": "editorLangId == latex || editorLangId == tex"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "texSync.openPreview",
+          "when": "editorLangId == latex || editorLangId == tex",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "texSync.openPreview",
+        "key": "cmd+alt+v",
+        "when": "editorLangId == latex || editorLangId == tex"
+      }
+    ],
+    "configuration": {
+      "title": "TeX Sync View",
+      "properties": {
+        "texSync.rootFile": {
+          "type": "string",
+          "default": "",
+          "description": "ルート tex のパス(ワークスペース相対)。空なら自動判定(%!TEX root、\\documentclass を含むファイル、main.tex の順)。"
+        },
+        "texSync.outDir": {
+          "type": "string",
+          "default": "",
+          "description": "出力ディレクトリ(ルート tex からの相対)。空なら latex-workshop.latex.outDir を使う。"
+        },
+        "texSync.latexmkArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "latexmk に渡す追加引数(-outdir とルートファイルは自動で付く)。空なら latex-workshop の先頭レシピの latexmk 引数をそのまま使う。"
+        },
+        "texSync.buildOnSave": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "always",
+            "never"
+          ],
+          "default": "auto",
+          "description": "保存時の自動ビルド。auto: LaTeX Workshop が入っていて自動ビルドが有効なら任せる(PDF 更新は自動で読み直す)。always: 常に自前でビルド。never: しない。"
+        },
+        "texSync.scrollSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "tex と PDF のスクロールを連動させる。"
+        },
+        "texSync.markSelection": {
+          "type": "boolean",
+          "default": true,
+          "description": "tex の選択範囲に対応する PDF の位置をマークする。"
+        },
+        "texSync.maxMarkLines": {
+          "type": "number",
+          "default": 80,
+          "description": "範囲マークで SyncTeX を引く最大行数。超えた分は等間隔に間引く。"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fatcorn753/tex-sync-view.git"
+  },
+  "homepage": "https://github.com/fatcorn753/tex-sync-view"
+}

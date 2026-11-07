@@ -1,0 +1,52 @@
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\title{TeX Sync View デモ文書}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\section{はじめに}
+この文書は、拡張機能 TeX Sync View の動作を紹介するためのダミーです。
+左のエディタで文章を選択すると、右の PDF の対応する位置が黄色でマークされます。
+逆に PDF をダブルクリックすると、エディタの該当行へ移動します。
+
+エディタと PDF のスクロールは双方向に連動します。
+どちらを動かしても、もう一方が同じ箇所を追いかけます。
+
+\section{数式}
+円周率に関する有名な式を例にします。
+\begin{equation}
+  \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots
+\end{equation}
+ガウス積分は次のとおりです。
+\begin{equation}
+  \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
+\end{equation}
+複数行にわたる式も、範囲をまとめて選択すれば全体がマークされます。
+\begin{align}
+  (a+b)^2 &= a^2 + 2ab + b^2 \\
+  (a-b)^2 &= a^2 - 2ab + b^2
+\end{align}
+
+\section{表}
+表の中の行も、対応する位置が正しくマークされます。
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    項目 & 値 & 単位 \\
+    \midrule
+    長さ & 12.5 & cm \\
+    重さ & 3.2 & kg \\
+    温度 & 21.0 & ℃ \\
+    \bottomrule
+  \end{tabular}
+  \caption{デモ用の表}
+\end{table}
+
+\section{おわりに}
+選択範囲を広げるほど、マークも広がります。
+自分の文書で試してみてください。
+\end{document}

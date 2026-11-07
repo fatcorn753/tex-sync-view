@@ -1,0 +1,9 @@
+html,body{margin:0;height:100%;background:var(--vscode-editor-background,#222);color:var(--vscode-foreground,#ccc);font:12px var(--vscode-font-family,sans-serif)}
+#bar{position:fixed;top:0;left:0;right:0;height:28px;display:flex;gap:6px;align-items:center;padding:0 8px;background:var(--vscode-sideBar-background,#252526);border-bottom:1px solid var(--vscode-panel-border,#444);z-index:5}
+#bar button{background:var(--vscode-button-secondaryBackground,#3a3d41);color:var(--vscode-button-secondaryForeground,#fff);border:0;padding:2px 8px;border-radius:2px;cursor:pointer}
+#st{color:var(--vscode-editorWarning-foreground,#cca700);margin-left:auto}
+#wrap{position:absolute;top:29px;bottom:0;left:0;right:0;overflow:auto}
+#pages{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0;min-width:max-content}
+.page{user-select:none;-webkit-user-select:none;cursor:default;position:relative;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.5);flex:none}
+.page canvas{display:block;width:100%;height:100%}
+.hl{position:absolute;background:rgba(255,213,0,.35);outline:2px solid rgba(255,160,0,.9);border-radius:2px;pointer-events:none}
